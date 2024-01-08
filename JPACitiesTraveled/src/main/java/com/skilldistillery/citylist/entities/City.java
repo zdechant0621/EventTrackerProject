@@ -1,5 +1,6 @@
 package com.skilldistillery.citylist.entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -15,12 +16,18 @@ public class City {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private String city;
-
-	private String state;
-	@Column(name = "shot_glass")
-	private boolean shotGlass;
+	@Column(name = "state_country")
+	private String stateCountry;
+	private String description;
+	@Column(name = "arrival_date")
+	private Date arrivalDate;
+	@Column(name = "departure_date")
+	private Date departureDate;
+	@Column(name = "shot_glass_bought")
+	private boolean shotGlassBought;
+	private boolean enabled;
+	
 
 	public City() {
 		super();
@@ -42,20 +49,52 @@ public class City {
 		this.city = city;
 	}
 
-	public String getState() {
-		return state;
+	public String getStateCountry() {
+		return stateCountry;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setStateCountry(String stateCountry) {
+		this.stateCountry = stateCountry;
 	}
 
-	public boolean isShotGlass() {
-		return shotGlass;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setShotGlass(boolean shotGlass) {
-		this.shotGlass = shotGlass;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getArrivalDate() {
+		return arrivalDate;
+	}
+
+	public void setArrivalDate(Date arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+
+	public Date getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(Date departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	public boolean isShotGlassBought() {
+		return shotGlassBought;
+	}
+
+	public void setShotGlassBought(boolean shotGlassBought) {
+		this.shotGlassBought = shotGlassBought;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override
@@ -77,7 +116,9 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", city=" + city + ", state=" + state + ", shotGlass=" + shotGlass + "]";
+		return "City [id=" + id + ", city=" + city + ", stateCountry=" + stateCountry + ", description=" + description
+				+ ", arrivalDate=" + arrivalDate + ", departureDate=" + departureDate + ", shotGlassBought="
+				+ shotGlassBought + ", enabled=" + enabled + "]";
 	}
 
 }

@@ -10,7 +10,7 @@ import com.skilldistillery.citylist.repositories.CityRepository;
 
 @Service
 public class CityServiceImpl implements CityService {
-	
+
 	@Autowired
 	private CityRepository cityRepo;
 
@@ -21,26 +21,45 @@ public class CityServiceImpl implements CityService {
 
 	@Override
 	public City getCity(int cityId) {
-		// TODO Auto-generated method stub
-		return null;
+		return cityRepo.findById(cityId);
+	}
+
+	@Override
+	public List<City> getAllShotGlassBoughtCities() {
+		return cityRepo.findByShotGlassBoughtTrue();
 	}
 
 	@Override
 	public City create(City city) {
-		// TODO Auto-generated method stub
-		return null;
+		return cityRepo.save(city);
 	}
 
 	@Override
 	public City update(int cityId, City city) {
-		// TODO Auto-generated method stub
-		return null;
+		City existingCity = cityRepo.findById(cityId);
+		existingCity.setCity(city.getCity());
+		existingCity.setStateCountry(city.getStateCountry());
+		existingCity.setDescription(city.getDescription());
+		existingCity.setArrivalDate(city.getArrivalDate());
+		existingCity.setDepartureDate(city.getDepartureDate());
+		existingCity.setShotGlassBought(city.isShotGlassBought());
+		cityRepo.save(existingCity);
+		return existingCity;
 	}
 
 	@Override
 	public boolean deleteById(int cityId) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean isDeleted = false;
+		City deactivate = cityRepo.findById(cityId);
+		
+		if(deactivate != null) {
+			deactivate.setEnabled(false);
+			cityRepo.save(deactivate);
+			if(!cityRepo.findById(cityId).isEnabled()) {
+				isDeleted = true;
+			}
+		}
+		
+		return isDeleted;
 	}
-
 }

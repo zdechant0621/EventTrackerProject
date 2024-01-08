@@ -45,7 +45,7 @@ class CityTest {
 	@Test
 	void test_City_entity_mapping() {
 		assertNotNull(city);
-		assertEquals("DENVER", city.getCity());
+		assertEquals("Chicago", city.getCity());
 	}
 
 }

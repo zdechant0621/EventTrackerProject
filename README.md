@@ -41,7 +41,7 @@ As a huge advocate of traveling, and someone who got to travel a lot to differen
 | HTTP Verb | URI               | Request Body | Response Body | Status Codes |
 |-----------|-------------------|--------------|---------------|--------------|
 | GET       | /api/cities       | None         | List of cities| 200 OK       |
-| GET       | /api/cities/{id}  | None         | Single habit  | 200 OK, 404 Not Found |
-| POST      | /api/cities       | Habit data   | Created habit | 201 Created, 400 Bad Request |
-| PUT       | /api/cities/{id}  | Updated data | Updated habit | 200 OK, 404 Not Found, 400 Bad Request |
+| GET       | /api/cities/{id}  | None         | Single city  | 200 OK, 404 Not Found |
+| POST      | /api/cities       | Habit data   | Created city | 201 Created, 400 Bad Request |
+| PUT       | /api/cities/{id}  | Updated data | Updated city | 200 OK, 404 Not Found, 400 Bad Request |
 | DELETE    | /api/cities/{id}  | None         | None          | 204 No Content, 404 Not Found |

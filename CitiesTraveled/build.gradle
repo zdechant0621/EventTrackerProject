@@ -35,3 +35,10 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << "-parameters"
 }
 
+war {
+  // Gradle will replace the variable archivesBaseName
+  // with our app name, as defined in settings.gradle
+  archiveFileName = "${archivesBaseName}.war"
+  destinationDirectory = file("../")     // Project workspace directory
+}
+
